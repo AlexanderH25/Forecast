@@ -3,11 +3,6 @@ const cards = document.querySelector('.card');
 const details = document.querySelector('.detail');
 const dayTime = document.querySelector('img.time');
 const icon = document.querySelector('.icon img');
-//From the forecastOOP file 
-//const forecast = new Forecast();
-// the function updateCity should be called with forecast.updateCity()
-//because it's an instance of Forecast class
-
 
 
 const updateUI = (data) => {
@@ -16,8 +11,6 @@ const updateUI = (data) => {
     const weather = data.weather;
     console.log('DATA', data);
 
-    //destructure properties
-    //storing the data to cityDets and weather 
     //const { cityDets, weather} = data;
 
     //update details template
@@ -45,7 +38,6 @@ const updateUI = (data) => {
 }
 
 const updateCity = async (city) => {
-    //getCity is async function and therefore it returns a promise, so we use await to make sure that is finished
     const cityDets = await getCity(city);
 
     const weather = await getWeather(cityDets.Key);
@@ -68,7 +60,6 @@ cityForm.addEventListener('submit', e => {
     .then(data => updateUI(data))
     .catch(error => console.log(error));
 
-    //set local storage
     localStorage.setItem('city', city);
 });
 
